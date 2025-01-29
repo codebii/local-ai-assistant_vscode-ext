@@ -1,2 +1,2 @@
-# local-ai-assistant_vscode-ext
-An extension for VS Code for running LLM models locally and interact with using an interface.
+# Local AI Assistant - VSCode extension
+An extension for VS Code created to run LLM models locally and interact with them via an interface.
