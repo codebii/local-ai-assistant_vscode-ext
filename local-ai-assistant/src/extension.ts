@@ -36,11 +36,12 @@ export function activate(context: vscode.ExtensionContext) {
 		panel.webview.onDidReceiveMessage(async (message: any) => {
 			if (message.command == 'chat') {
 				const userPrompt = message.text;
-				let responseText = '';
+				let responseText = 'Answer: ';
 
 				try {
+
 					const streamResponse = await ollama.chat({
-						model: 'deepseek-r1:latest',
+						model: 'deepseek-r1:1.5b',
 						messages: [{ role: 'user', content: userPrompt }],
 						stream: true
 					});
@@ -51,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 					}
 
 				} catch (err) {
-					throw err
+					console.error(err);
 				}
 			}
 		});

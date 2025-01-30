@@ -63,10 +63,10 @@ function activate(context) {
         panel.webview.onDidReceiveMessage(async (message) => {
             if (message.command == 'chat') {
                 const userPrompt = message.text;
-                let responseText = '';
+                let responseText = 'Answer: ';
                 try {
                     const streamResponse = await ollama_1.default.chat({
-                        model: 'deepseek-r1:latest',
+                        model: 'deepseek-r1:1.5b',
                         messages: [{ role: 'user', content: userPrompt }],
                         stream: true
                     });
@@ -76,7 +76,7 @@ function activate(context) {
                     }
                 }
                 catch (err) {
-                    throw err;
+                    console.error(err);
                 }
             }
         });
